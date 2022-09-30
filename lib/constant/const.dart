@@ -1,0 +1,3 @@
+const String loginRoute='/';
+const String mainPageRoute='/mainpage';
+const String token='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjM1LCJyb2xlIjo0LCJpYXQiOjE2NjQ1NTgxODAsImV4cCI6MTc1MDk1ODE4MH0.KlJFLCbOGDXbPulD5d03oGUwR83yvj3HJJUo9fZnQVs';
