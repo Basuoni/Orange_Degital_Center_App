@@ -19,7 +19,10 @@ class Lectures extends StatelessWidget {
           LectureCubit myCubit =LectureCubit.get(context);
           return MaterialApp(
             home: Scaffold(
-              appBar: AppBarrText(text: 'Lecture'),
+              appBar: AppBar(
+                backgroundColor: Colors.red,
+                title: const Text("Lectures"),
+              ),
               body: LecturCard('flutter'),
             ),
           );

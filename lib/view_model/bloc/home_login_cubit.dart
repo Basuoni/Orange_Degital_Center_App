@@ -23,7 +23,15 @@ class LoginCubit extends Cubit<LoginState> {
     }).then((value) {
       print(value.statusCode);
       print(value.data);
-      if(value.statusCode==200){Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));}
+      if (value.statusCode == 200) {
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+            builder: (BuildContext context) => MainPage(),
+          ),
+              (route) => false,
+        );
+      }
     }).catchError((onError) {
       print(onError);
     });

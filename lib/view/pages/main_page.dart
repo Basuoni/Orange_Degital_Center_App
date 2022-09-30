@@ -5,16 +5,21 @@ import '../componants/google_nav.dart';
 import '../../view_model/bloc/main_page_cubit.dart';
 
 class MainPage extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
+    bool send =true;
     return BlocProvider(
       create: (context) => MainPageCubit(),
       child: BlocBuilder<MainPageCubit, MainPageState>(
         builder: (context, state) {
           MainPageCubit cubit;
           cubit = MainPageCubit.get(context);
+         if(send) {
 
-          if (state is HomeState) {
+            send = false;
+         }
+         if (state is HomeState) {
             print('Home');
           } else if (state is NewsState) {
             print('News');
