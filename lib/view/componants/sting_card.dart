@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 
-Widget SetingCard ()
+Widget SetingCard (String text,context,Widget desiredPage)
 {
-  return ListTile(
-    shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.0)),
-    selected: true,
-    selectedTileColor: Colors.orange[300],
-    title: const Text(
-      'FAQ',
-      style: TextStyle(fontWeight: FontWeight.bold),
-    ),
-    trailing: const Icon(Icons.arrow_forward),
+  return  InkWell(
+    onTap:(){Navigator.push(context, MaterialPageRoute(builder: (context)=>desiredPage));} ,
+    child: Container(
+        width: double.infinity,
+        height: 100,
+        child: Card(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(text,style: TextStyle(fontSize: 20),),
+              IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward_ios_sharp))
+            ],
+          ),
+
+        ),
+      ),
   );
 }

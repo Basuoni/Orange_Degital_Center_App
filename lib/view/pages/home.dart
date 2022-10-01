@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practice/view/componants/card.dart';
+import 'package:practice/view/pages/calender.dart';
 import 'package:practice/view/pages/lectures.dart';
 
 class Home extends StatelessWidget {
@@ -18,7 +19,7 @@ class Home extends StatelessWidget {
         MyCard("assets/icons/sections.svg", 'sections',(){Navigator.push(context, MaterialPageRoute(builder: (context)=>Lectures()));}),
         MyCard("assets/icons/midterm.svg", 'midterms',(){}),
         MyCard("assets/icons/final.svg", 'final',(){}),
-        MyCard("assets/icons/event.svg", 'event',(){}),
+        MyCard("assets/icons/event.svg", 'event',(){Navigator.push(context, MaterialPageRoute(builder: (context)=>Calender()));}),
         MyCard("assets/icons/notes.svg", 'notes',(){}),
       ],
     );

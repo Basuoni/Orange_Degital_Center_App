@@ -21,12 +21,12 @@ Widget Goole_nav({required ValueChanged<int> onchange,int i=0}) {
         text: 'Home',
       ),
       GButton(
-        icon: Icons.calendar_month,
-        text: 'Likes',
+        icon: Icons.newspaper,
+        text: 'News',
       ),
       GButton(
-        icon: Icons.settings,
-        text: 'Search',
+        icon: Icons.settings_outlined,
+        text: 'Setting',
       ),
     ],
   );

@@ -42,6 +42,12 @@ dependencies:
   flutter_bloc: ^8.1.1
   flutter_svg: ^1.1.5
   dio:
+  calendar_view:
+  table_calendar: ^3.0.7
+  flutter_calendar_carousel: ^2.4.0
+  html2md: ^1.2.6
+  flutter_markdown: ^0.6.12
+  toggle_list: ^0.2.1
 
 dev_dependencies:
   flutter_test:
