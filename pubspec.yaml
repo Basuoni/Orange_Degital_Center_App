@@ -42,14 +42,6 @@ dependencies:
   flutter_bloc: ^8.1.1
   flutter_svg: ^1.1.5
   dio:
-  html2md: ^1.2.6
-  flutter_markdown: ^0.6.12
-  email_validator: ^2.1.17
-  syncfusion_flutter_calendar: ^20.3.47
-  flutter_calendar_carousel: ^2.4.0
-  toggle_list: ^0.2.1
-  another_flushbar: ^1.12.29
-  lottie: ^1.4.3
 
 dev_dependencies:
   flutter_test:
@@ -76,7 +68,6 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
         - assets/icons/
-        - assets/lottie/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
