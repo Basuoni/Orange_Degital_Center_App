@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 Widget OrDvider() {
   return Padding(
-    padding: const EdgeInsets.only(bottom: 30),
+    padding: const EdgeInsets.only(bottom: 15),
     child: Row(children: const <Widget>[
       Expanded(
           child: Divider(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 Widget OrangeLogoFontStyle ()
 {
   return Container(
-    padding: EdgeInsets.only(top:20,bottom: 80),
+    padding: const EdgeInsets.only(top:20,bottom: 20),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children:  const [
@@ -11,11 +11,11 @@ Widget OrangeLogoFontStyle ()
           style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.deepOrange,
-              fontSize: 30),
+              fontSize: 25),
         ),
         Text('Digital Center',
             style: TextStyle(
-                fontWeight: FontWeight.bold, fontSize: 30)),
+                fontWeight: FontWeight.bold, fontSize: 25)),
       ],
     ),
   );

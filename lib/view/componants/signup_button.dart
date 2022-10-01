@@ -10,10 +10,9 @@ Widget SignupButton(Color color, String text,Color textcolor,BuildContext contex
       children: [
         Expanded(
           child: SizedBox(
-            height: 55,
+            height: 50,
             child: ElevatedButton(
                 onPressed: () {
-
                   Navigator.push(context, MaterialPageRoute(builder: (_) =>  SigUp()));
                 },
                 style: ButtonStyle(
@@ -27,7 +26,6 @@ Widget SignupButton(Color color, String text,Color textcolor,BuildContext contex
                     style:  TextStyle(
                       color: textcolor,
                       fontSize: 20,
-                      fontWeight: FontWeight.bold,
                     ))),
           ),
         ),
