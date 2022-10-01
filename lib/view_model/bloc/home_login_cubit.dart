@@ -15,7 +15,9 @@ class LoginCubit extends Cubit<LoginState> {
   static LoginCubit get(context) => BlocProvider.of(context);
   TextEditingController emailct = TextEditingController();
   TextEditingController passwordct = TextEditingController();
-
+  void changeVisibilityPassword(){
+    emit(ChangeVisibilityPassword());
+  }
   void authintication(context) {
     DioHelper.postData(url: loginEndPoint, data: {
       'email': emailct.text,
@@ -32,8 +34,10 @@ class LoginCubit extends Cubit<LoginState> {
               (route) => false,
         );
       }
+
     }).catchError((onError) {
-      print(onError);
+      emit(ErrorAuthenticationState());
+      print("Ahmeddddd");
     });
   }
 }

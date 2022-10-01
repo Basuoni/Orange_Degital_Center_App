@@ -3,13 +3,16 @@ import 'package:flutter/material.dart';
 Widget BoldText(String text)
 {
   return  Container(
-    padding: EdgeInsets.only(bottom: 20),
+    padding: const EdgeInsets.only(bottom: 10,top: 15),
     child: Row(
+
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
+        const SizedBox(width: 15,),
         Text(
           text,
           style: const TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 25),
+              fontSize: 25),
           textAlign: TextAlign.right,
         ),
       ],

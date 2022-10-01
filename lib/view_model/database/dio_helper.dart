@@ -65,6 +65,8 @@ class DioHelper {
       );
       return response;
     } catch (e) {
+
+      print("Ahmeddddd");
       rethrow;
     }
   }

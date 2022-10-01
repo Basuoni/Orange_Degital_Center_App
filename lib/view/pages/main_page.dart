@@ -16,16 +16,15 @@ class MainPage extends StatelessWidget {
           MainPageCubit cubit;
           cubit = MainPageCubit.get(context);
          if(send) {
-
             send = false;
          }
          if (state is HomeState) {
             print('Home');
-          } else if (state is NewsState) {
+         } else if (state is NewsState) {
             print('News');
-          } else if (state is SitingState) {
+         } else if (state is SitingState) {
             print('SitingState');
-          }
+         }
           return MaterialApp(
             home: Container(
               child: SafeArea(

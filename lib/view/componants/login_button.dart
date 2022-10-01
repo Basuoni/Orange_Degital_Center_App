@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 Widget LoginButton(
     Color color, String text, Color textcolor, BuildContext context,VoidCallback onPressed) {
   return Padding(
-    padding: const EdgeInsets.only(bottom: 30),
+    padding: const EdgeInsets.only(bottom: 15),
     child: Row(
       children: [
         Expanded(
           child: SizedBox(
-            height: 55,
+            height: 50,
             child: ElevatedButton(
                 onPressed: onPressed,
                 style: ButtonStyle(
@@ -22,7 +22,6 @@ Widget LoginButton(
                     style: TextStyle(
                       color: textcolor,
                       fontSize: 20,
-                      fontWeight: FontWeight.bold,
                     ))),
           ),
         ),
