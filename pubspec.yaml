@@ -48,6 +48,8 @@ dependencies:
   syncfusion_flutter_calendar: ^20.3.47
   flutter_calendar_carousel: ^2.4.0
   toggle_list: ^0.2.1
+  another_flushbar: ^1.12.29
+  lottie: ^1.4.3
 
 dev_dependencies:
   flutter_test:
