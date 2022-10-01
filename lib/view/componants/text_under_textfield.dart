@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 Widget UnderText() {
   return Container(
-    padding: const EdgeInsets.only(bottom: 50),
+    padding: const EdgeInsets.only(bottom: 30),
     child: Row(
       children:  [
         const SizedBox(width: 15,),

@@ -15,29 +15,31 @@ class LoginCubit extends Cubit<LoginState> {
   static LoginCubit get(context) => BlocProvider.of(context);
   TextEditingController emailct = TextEditingController();
   TextEditingController passwordct = TextEditingController();
-  void changeVisibilityPassword(){
+  void changeVisibilityPassword() {
     emit(ChangeVisibilityPassword());
   }
-  void authintication(context) {
-    DioHelper.postData(url: loginEndPoint, data: {
-      'email': emailct.text,
-      'password': passwordct.text,
-    }).then((value) {
-      print(value.statusCode);
-      print(value.data);
-      if (value.statusCode == 200) {
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(
-            builder: (BuildContext context) => MainPage(),
-          ),
-              (route) => false,
-        );
-      }
 
-    }).catchError((onError) {
-      emit(ErrorAuthenticationState());
-      print("Ahmeddddd");
+  void authintication(context) {
+    emit(LoadingState());
+    Future.delayed(const Duration(seconds: 2), () {
+      DioHelper.postData(url: loginEndPoint, data: {
+        'email': emailct.text,
+        'password': passwordct.text,
+      }).then((value) {
+        print(value.statusCode);
+        print(value.data);
+        if (value.statusCode == 200) {
+          Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+              builder: (BuildContext context) => MainPage(),
+            ),
+            (route) => false,
+          );
+        }
+      }).catchError((onError) {
+        emit(ErrorAuthenticationState());
+      });
     });
   }
 }

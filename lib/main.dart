@@ -10,6 +10,10 @@ void main() async {
   AppRoute appRoute = AppRoute();
   await DioHelper.init();
   runApp(MaterialApp( home: Splash(),
+    debugShowCheckedModeBanner: false,
+    theme: ThemeData(
+      primarySwatch: Colors.deepOrange
+    ),
     //onGenerateRoute: appRoute.generateRoot,
   ));
 }

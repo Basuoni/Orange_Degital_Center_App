@@ -1,7 +1,8 @@
-
+import 'package:another_flushbar/flushbar.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 import 'package:practice/view/componants/signup_button.dart';
 import '../../view_model/bloc/home_login_cubit.dart';
 import '../componants/bold_text.dart';
@@ -14,6 +15,8 @@ import '../componants/text_under_textfield.dart';
 class Login extends StatelessWidget {
   var farmkay = GlobalKey<FormState>();
   bool isPassword = true;
+  bool isLogining = false;
+
   IconData iconPassword = Icons.remove_red_eye;
   @override
   Widget build(BuildContext context) {
@@ -22,8 +25,9 @@ class Login extends StatelessWidget {
       child: BlocConsumer<LoginCubit, LoginState>(
         listener: (context, state) {
           if (state is ErrorAuthenticationState) {
-            // showSnackBar(context);
+            showTopSnackBar(context);
           }
+          isLogining = (state is LoadingState);
         },
         builder: (context, state) {
           return BlocBuilder<LoginCubit, LoginState>(
@@ -67,14 +71,22 @@ class Login extends StatelessWidget {
                                     : Icons.visibility_off,
                                 txtcontroler: myCubit.passwordct),
                             UnderText(),
-                            LoginButton(Colors.deepOrange, 'Login',
-                                Colors.white, context, () {
-                              if (farmkay.currentState!.validate()) {
-                                myCubit.authintication(context);
-                              }
-                            }),
+                            SizedBox(
+                              height: 100,
+                              child: Center(
+                                child: isLogining
+                                    ? Lottie.asset(
+                                        'assets/lottie/waiting_api.json')
+                                    : LoginButton(Colors.deepOrange, 'Login',
+                                        Colors.white, context, () {
+                                        if (farmkay.currentState!.validate()) {
+                                          myCubit.authintication(context);
+                                        }
+                                      }),
+                              ),
+                            ),
                             OrDvider(),
-                            SignupButton(Colors.white, 'Sign up',
+                            SignupButton(isLogining,Colors.white, 'Sign up',
                                 Colors.deepOrange, context),
                           ],
                         ),
@@ -89,14 +101,25 @@ class Login extends StatelessWidget {
       ),
     );
   }
-  //
-  // void showSnackBar(BuildContext context) =>Flushbar(
-  //   duration: const Duration(seconds: 2),
-  //   // shouldIconPulse: false,
-  //   borderRadius: 15,
-  //   title: ' Find Error!',
-  //   message: '  in password or email',
-  //   flushbarPosition: FlushbarPosition.TOP,
-  //   icon: const Icon(Icons.error_outline ,size: 25,color: Colors.white,),
-  // )..show(context);
+
+  void showTopSnackBar(BuildContext context) => Flushbar(
+        icon: const Icon(Icons.error, size: 32, color: Colors.white),
+        shouldIconPulse: false,
+        backgroundGradient: const LinearGradient(
+          colors: [Colors.deepOrange, Colors.deepOrangeAccent],
+        ),
+        boxShadows: const [
+          BoxShadow(
+            color: Colors.deepOrange,
+            offset: Offset(2, 2),
+            blurRadius: 8,
+          )
+        ],
+        title: ' Error Authentication !',
+        message: 'Check your password or email',
+        duration: const Duration(seconds: 5),
+        flushbarPosition: FlushbarPosition.TOP,
+        margin: const EdgeInsets.fromLTRB(8, kToolbarHeight, 8, 0),
+        borderRadius: BorderRadius.circular(16.0),
+      )..show(context);
 }
