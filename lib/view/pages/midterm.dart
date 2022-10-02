@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:lottie/lottie.dart';
 import 'package:practice/view_model/bloc/midterms_cubit.dart';
 import '../componants/app_bar.dart';
 import '../componants/lecture_card.dart';
@@ -33,7 +34,7 @@ class Midterms extends StatelessWidget {
                     )
                   ]),
               body: myCubit.midtermData?.message == null
-                  ? Center(child: Text('loding...'))
+                  ? Center(child: Lottie.asset('assets/lottie/waiting.json'))
                   : ListView.builder(
                 itemCount: myCubit.midtermData!.data!.length,
                 shrinkWrap: true,

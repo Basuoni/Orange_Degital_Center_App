@@ -70,7 +70,7 @@ class Login extends StatelessWidget {
                                     ? Icons.visibility
                                     : Icons.visibility_off,
                                 txtcontroler: myCubit.passwordct),
-                            UnderText(),
+                            UnderText('Forget password'),
                             SizedBox(
                               height: 100,
                               child: Center(

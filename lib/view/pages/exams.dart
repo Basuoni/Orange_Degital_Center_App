@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:lottie/lottie.dart';
 import 'package:practice/view_model/bloc/exams_cubit.dart';
 
 import '../../view_model/bloc/midterms_cubit.dart';
@@ -35,7 +36,7 @@ class Exams extends StatelessWidget {
                     )
                   ]),
               body: myCubit.examData == null
-                  ? Center(child: Text('loding...'))
+                  ? Center(child: Lottie.asset('assets/lottie/waiting.json'))
                   : ListView.builder(
                 itemCount: myCubit.examData!.data!.length,
                 shrinkWrap: true,

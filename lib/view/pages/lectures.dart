@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:lottie/lottie.dart';
 import 'package:practice/view_model/bloc/lecture_cubit.dart';
 import '../componants/app_bar.dart';
 import '../componants/lecture_card.dart';
@@ -33,7 +34,7 @@ class Lectures extends StatelessWidget {
                     )
                   ]),
               body: myCubit.lectureData?.message == null
-                  ? Center(child: Text('loding...'))
+                  ? Center(child: Lottie.asset('assets/lottie/waiting.json'))
                   : ListView.builder(
                 itemCount: myCubit.lectureData!.data!.length,
                 shrinkWrap: true,

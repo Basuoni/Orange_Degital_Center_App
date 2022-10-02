@@ -5,6 +5,7 @@ import 'package:practice/view/pages/exams.dart';
 import 'package:practice/view/pages/lectures.dart';
 import 'package:practice/view/pages/sections.dart';
 
+import 'addnotes.dart';
 import 'midterm.dart';
 
 class Home extends StatelessWidget {
@@ -24,7 +25,7 @@ class Home extends StatelessWidget {
         MyCard("assets/icons/midterm.svg", 'midterms',(){Navigator.push(context, MaterialPageRoute(builder: (context)=>Midterms()));}),
         MyCard("assets/icons/final.svg", 'final',(){Navigator.push(context, MaterialPageRoute(builder: (context)=>Exams()));}),
         MyCard("assets/icons/event.svg", 'event',(){Navigator.push(context, MaterialPageRoute(builder: (context)=>Calender()));}),
-        MyCard("assets/icons/notes.svg", 'notes',(){}),
+        MyCard("assets/icons/notes.svg", 'notes',(){Navigator.push(context, MaterialPageRoute(builder: (context)=>Notes()));}),
       ],
     );
   }
