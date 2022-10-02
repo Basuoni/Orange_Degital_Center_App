@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-Widget Textfield({bool isPassword = false, VoidCallback? onPressedIcon, FormFieldValidator<String>? validator, required String hint, IconData? icon,required TextEditingController txtcontroler,}) {
+Widget Textfield({ TextInputType? type, bool isPassword = false, VoidCallback? onPressedIcon, FormFieldValidator<String>? validator, required String hint, IconData? icon,required TextEditingController txtcontroler,}) {
   return Padding(
     padding: const EdgeInsets.only(bottom: 10),
     child: SizedBox(
       child: TextFormField(
+        keyboardType: type ??TextInputType.text ,
         obscureText : isPassword,
         validator:validator ?? (it){
           if(it?.isEmpty == true) return '$hint must not be empty';
@@ -12,6 +13,7 @@ Widget Textfield({bool isPassword = false, VoidCallback? onPressedIcon, FormFiel
         },
         controller: txtcontroler,
         decoration: InputDecoration(
+
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           ),

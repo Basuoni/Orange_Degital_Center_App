@@ -1,52 +1,31 @@
 import 'package:flutter/material.dart';
 
-import 'bold_text.dart';
 
-Widget DropDown(String text) {
-  List<String> items = [
-    'Item 1',
-    'Item 2',
-    'Item 3',
-    'Item 4',
-    'Item 5',
-  ];
-  String selectedItem = 'Item 1';
-  return Column(
+Widget DropDown({required String name,required IconData icon,required List<String> item,required FormFieldSetter<String> onChange}) {
+  String selectedItem = item[0];
+  return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.symmetric(vertical: 5),
 
-    children: [
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          BoldText(text),
-        ],
-      ),
-      Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-          border: Border.all(
-            width: 1.5,
-            color: Colors.deepOrange,
-            // red as border color
+      child: DropdownButtonFormField(
+        value: selectedItem,
+        onChanged: onChange,
+        decoration:   InputDecoration(
+          labelText: name,
+          border: const OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10.0)),
           ),
+          prefixIcon: Icon(icon),
         ),
-        child: DropdownButton(
-          value: selectedItem,
-          items: items
-              .map((item) => DropdownMenuItem(
-                    value: item,
-                    child: Text(
-                      item,
-                      style: TextStyle(fontSize: 24),
-                    ),
-                  ))
-              .toList(),
-          onChanged: (item) => setState(() => selectedItem = item!),
-        ),
-      ),
-    ],
-  );
+        icon: const Icon(Icons.arrow_drop_down_circle_outlined,
+            color: Colors.deepOrange),
+
+        items: item.map<DropdownMenuItem<String>>((String item) {
+          return DropdownMenuItem<String>(
+            value: item,
+            child: Text(item),
+          );
+        }).toList(),
+      ));
 }
 
-setState(String Function() param0) {
-
-}

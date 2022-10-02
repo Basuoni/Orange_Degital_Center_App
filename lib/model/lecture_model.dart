@@ -3,7 +3,7 @@ class LectureModel {
   String? message;
   List<Data>? data;
 
-  LectureModel({this.code, this.message, this.data});
+  LectureModel({code, message, data});
 
   LectureModel.fromJson(Map<String, dynamic> json) {
     code = json['code'];
@@ -11,18 +11,16 @@ class LectureModel {
     if (json['data'] != null) {
       data = <Data>[];
       json['data'].forEach((v) {
-        data!.add(new Data.fromJson(v));
+        data!.add(Data.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['code'] = this.code;
-    data['message'] = this.message;
-    if (this.data != null) {
-      data['data'] = this.data!.map((v) => v.toJson()).toList();
-    }
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['code'] = code;
+    data['message'] = message;
+    data['data'] = this.data!.map((v) => v.toJson()).toList();
     return data;
   }
 }
@@ -36,12 +34,12 @@ class Data {
   String? university;
 
   Data(
-      {this.id,
-        this.lectureSubject,
-        this.lectureDate,
-        this.lectureStartTime,
-        this.lectureEndTime,
-        this.university});
+      {id,
+        lectureSubject,
+        lectureDate,
+        lectureStartTime,
+        lectureEndTime,
+        university});
 
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -53,13 +51,13 @@ class Data {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['lectureSubject'] = this.lectureSubject;
-    data['lectureDate'] = this.lectureDate;
-    data['lectureStartTime'] = this.lectureStartTime;
-    data['lectureEndTime'] = this.lectureEndTime;
-    data['university'] = this.university;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['lectureSubject'] = lectureSubject;
+    data['lectureDate'] = lectureDate;
+    data['lectureStartTime'] = lectureStartTime;
+    data['lectureEndTime'] = lectureEndTime;
+    data['university'] = university;
     return data;
   }
 }
