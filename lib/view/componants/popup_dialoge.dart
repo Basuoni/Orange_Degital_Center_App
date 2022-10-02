@@ -25,8 +25,8 @@ Widget Logout (String text,context)
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(text,style: TextStyle(fontSize: 20),),
-            IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward_ios_sharp))
+            Text(text,style: const TextStyle(fontSize: 20),),
+            IconButton(onPressed: (){}, icon: const Icon(Icons.arrow_forward_ios_sharp))
           ],
         ),
 

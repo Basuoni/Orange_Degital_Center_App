@@ -1,8 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:practice/view/pages/main_page.dart';
-import 'package:practice/view/pages/newshero.dart';
 import 'package:practice/view/pages/splash.dart';
 import 'package:practice/view_model/database/dio_helper.dart';
 import 'app_root.dart';
@@ -11,7 +9,7 @@ void main() async {
   HttpOverrides.global = MyHttpOverrides();
   AppRoute appRoute = AppRoute();
   await DioHelper.init();
-  runApp(MaterialApp( home: MainPage(),
+  runApp(MaterialApp( home: Splash(),
     //onGenerateRoute: appRoute.generateRoot,
   ));
 }

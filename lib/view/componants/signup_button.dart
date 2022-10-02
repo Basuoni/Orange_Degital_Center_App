@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../pages/sing_up.dart';
 
-Widget SignupButton(Color color, String text,Color textcolor,BuildContext context) {
+Widget SignupButton(bool go,Color color, String text,Color textcolor,BuildContext context) {
   return Padding(
     padding: const EdgeInsets.only(bottom: 30),
     child: Row(
@@ -13,7 +13,9 @@ Widget SignupButton(Color color, String text,Color textcolor,BuildContext contex
             height: 50,
             child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (_) =>  SigUp()));
+                  if(!go) {
+                    Navigator.push(context, MaterialPageRoute(builder: (_) =>  SigUp()));
+                  }
                 },
                 style: ButtonStyle(
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(

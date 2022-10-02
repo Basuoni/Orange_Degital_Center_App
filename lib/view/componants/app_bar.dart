@@ -7,7 +7,7 @@ PreferredSizeWidget AppBarrText(
     leading: lead,
     title: Text(
       text,
-      style: TextStyle(
+      style: const TextStyle(
           fontSize: 30, color: Colors.black, fontWeight: FontWeight.w400),
     ),
     centerTitle: true,

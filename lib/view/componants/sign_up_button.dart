@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../view_model/bloc/main_page_cubit.dart';
-import '../pages/main_page.dart';
 import '../pages/sing_up.dart';
 
 Widget Sign_up (Color color, String text,Color textcolor,BuildContext context) {
