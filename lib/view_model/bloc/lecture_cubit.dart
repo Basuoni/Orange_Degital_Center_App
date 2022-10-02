@@ -15,7 +15,7 @@ class LectureCubit extends Cubit<LectureState> {
   LectureModel ?lectureData;
 
   void getDataLecture() {
-    DioHelper.getData(url: lectureEndPoint,token: token).then((value) {
+    DioHelper.getData(url: userLecturesEndPoint,token: token).then((value) {
       lectureData =LectureModel.fromJson(value.data);
       print(lectureData?.message.toString());
       emit(LectureDataStored());

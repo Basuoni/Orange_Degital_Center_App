@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:practice/view_model/bloc/lecture_cubit.dart';
+import 'package:practice/view_model/bloc/exams_cubit.dart';
+
+import '../../view_model/bloc/midterms_cubit.dart';
 import '../componants/app_bar.dart';
 import '../componants/lecture_card.dart';
 
-class Lectures extends StatelessWidget {
-  const Lectures({Key? key}) : super(key: key);
+class Exams extends StatelessWidget {
+  const Exams({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LectureCubit()..getDataLecture(),
-      child: BlocConsumer<LectureCubit, LectureState>(
+      create: (context) => ExamsCubit()..getDataLecture(),
+      child: BlocConsumer<ExamsCubit, ExamsState>(
         listener: (context, state) {
           // TODO: implement listener
         },
         builder: (context, state) {
-          LectureCubit myCubit = LectureCubit.get(context);
+          ExamsCubit myCubit = ExamsCubit.get(context);
           return MaterialApp(
             home: Scaffold(
               appBar: AppBarrText(
@@ -25,24 +27,26 @@ class Lectures extends StatelessWidget {
                     icon: Icon(Icons.arrow_back, color: Colors.black),
                     onPressed: () => Navigator.of(context).pop(),
                   ),
-                  text: 'Lecture',
+                  text: 'Exams',
                   action: [
                     IconButton(
                       onPressed: () {},
                       icon: SvgPicture.asset('assets/icons/filter.svg'),
                     )
                   ]),
-              body: myCubit.lectureData?.message == null
+              body: myCubit.examData == null
                   ? Center(child: Text('loding...'))
                   : ListView.builder(
-                itemCount: myCubit.lectureData!.data!.length,
+                itemCount: myCubit.examData!.data!.length,
                 shrinkWrap: true,
                 itemBuilder: (BuildContext context, int index) {
                   return LecturCard(
-                    myCubit.lectureData!.data![index].lectureSubject.toString(),
-                    myCubit.lectureData!.data![index].lectureDate.toString(),
-                    myCubit.lectureData!.data![index].lectureStartTime.toString(),
-                    myCubit.lectureData!.data![index].lectureStartTime.toString(),
+                    myCubit.examData!.data![index].examSubject.toString(),
+                    myCubit.examData!.data![index].examDate.toString(),
+                    myCubit.examData!.data![index].examStartTime
+                        .toString(),
+                    myCubit.examData!.data![index].examEndTime
+                        .toString(),
                     //myCubit.lectureData!.data![index].university.toString()
                   );
                 },
@@ -54,4 +58,3 @@ class Lectures extends StatelessWidget {
     );
   }
 }
-//tohamymedo41@gmail.com

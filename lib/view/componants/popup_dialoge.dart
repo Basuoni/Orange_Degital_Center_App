@@ -14,7 +14,7 @@ Widget Logout (String text,context)
       content: Text('Are you sure'),
       actions: [
         LoginButton( Colors.deepOrange,"sure",Colors.white,context,(){Navigator.push(context, MaterialPageRoute(builder: (context)=>Login()));}),
-        LoginButton( Colors.white,"cansel",Colors.deepOrange,context,(){Navigator.push(context, MaterialPageRoute(builder: (context)=>Settings()));}),
+        LoginButton( Colors.white,"cansel",Colors.deepOrange,context,(){Navigator.pop(context);}),
 
       ],
     ) );} ,
