@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-Widget MyCard(String s, String data,VoidCallback onPressed) {
+Widget MyCard(String s, String data, {required VoidCallback onPressed}) {
   return InkWell(
     onTap: onPressed,
     child: Card(

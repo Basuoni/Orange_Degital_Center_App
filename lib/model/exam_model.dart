@@ -6,12 +6,12 @@ class ExamsModel {
   ExamsModel({this.code, this.message, this.data});
 
   ExamsModel.fromJson(Map<String, dynamic> json) {
-    code = json['code'];
-    message = json['message'];
+    code = json['code'] as String;
+    message = json['message'] as String;
     if (json['data'] != null) {
       data = <Data>[];
       json['data'].forEach((v) {
-        data!.add(new Data.fromJson(v));
+        data!.add(new Data.fromJson(v as Map<String, dynamic>));
       });
     }
   }
@@ -37,14 +37,14 @@ class Data {
 
   Data(
       {this.id,
-        this.examDate,
-        this.examStartTime,
-        this.examEndTime,
-        this.examSubject,
-        this.examGrade});
+      this.examDate,
+      this.examStartTime,
+      this.examEndTime,
+      this.examSubject,
+      this.examGrade});
 
   Data.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = json['id'] as int?;
     examDate = json['examDate'];
     examStartTime = json['examStartTime'];
     examEndTime = json['examEndTime'];

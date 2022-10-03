@@ -50,36 +50,38 @@ class SignUpCubit extends Cubit<SignUpState> {
     emit(ChangeVisibilityPassword());
   }
 
-  void register(context) {
-    emit(LoadingState()); Future.delayed(const Duration(seconds: 3), () {
-    DioHelper.postData(url: registerEndPoint, data: {
-      'name': nameController.text,
-      'email': emailController.text,
-      'password': passwordController.text,
-      'gender': _gender == 'Male' ? 'm' : 'f',
-      'phoneNumber': phoneController.text,
-      'universityId': _university,
-      'gradeId': _grade,
-    }).then((value) {
-      print(value.data);
-      Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(
-          builder: (BuildContext context) => Login(),
-        ),
-        (route) => false,
-      );
-    }).catchError((e) {
-      print('registerEndPoint : $e');
-      emit(ErrorAuthenticationState());
-    }); });
+  void register(BuildContext context) {
+    emit(LoadingState());
+    Future.delayed(const Duration(seconds: 3), () {
+      DioHelper.postData(url: registerEndPoint, data: {
+        'name': nameController.text,
+        'email': emailController.text,
+        'password': passwordController.text,
+        'gender': _gender == 'Male' ? 'm' : 'f',
+        'phoneNumber': phoneController.text,
+        'universityId': _university,
+        'gradeId': _grade,
+      }).then((value) {
+        print(value.data);
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+            builder: (BuildContext context) => Login(),
+          ),
+          (route) => false,
+        );
+      }).catchError((e) {
+        print('registerEndPoint : $e');
+        emit(ErrorAuthenticationState());
+      });
+    });
   }
 
   void _getData() {
     _cnt = 2;
     DioHelper.getData(url: gradeEndPoint).then((value) {
       if (value.statusCode == 200) {
-        final data = GradeResponse.fromJson(value.data);
+        final data = GradeResponse.fromJson(value.data as Map<String, dynamic>);
         gradeItem = [];
         for (var it in data.data!) {
           gradeItem.add(it.grade!);
@@ -91,7 +93,8 @@ class SignUpCubit extends Cubit<SignUpState> {
     });
     DioHelper.getData(url: universityEndPoint).then((value) {
       if (value.statusCode == 200) {
-        final data = UniversityResponse.fromJson(value.data);
+        final data =
+            UniversityResponse.fromJson(value.data as Map<String, dynamic>);
         universityItem = [];
         for (var it in data.data!) {
           _idUnversty[it.name!] = it.id!;
