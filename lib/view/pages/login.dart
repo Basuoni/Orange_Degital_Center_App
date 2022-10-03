@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:practice/view/componants/signup_button.dart';
+
 import '../../view_model/bloc/home_login_cubit.dart';
 import '../componants/bold_text.dart';
 import '../componants/login_button.dart';
@@ -13,11 +14,12 @@ import '../componants/text_field.dart';
 import '../componants/text_under_textfield.dart';
 
 class Login extends StatelessWidget {
-  var farmkay = GlobalKey<FormState>();
+  var formkey = GlobalKey<FormState>();
   bool isPassword = true;
-  bool isLogining = false;
+  bool isLoagining = false;
 
   IconData iconPassword = Icons.remove_red_eye;
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -25,15 +27,14 @@ class Login extends StatelessWidget {
       child: BlocConsumer<LoginCubit, LoginState>(
         listener: (context, state) {
           if (state is ErrorAuthenticationState) {
-            showTopSnackBar(context);
+            context.showTopSnackBar();
           }
-          isLogining = (state is LoadingState);
+          isLoagining = (state is LoadingState);
         },
         builder: (context, state) {
           return BlocBuilder<LoginCubit, LoginState>(
             builder: (context, state) {
-              LoginCubit myCubit;
-              myCubit = BlocProvider.of(context);
+              LoginCubit myCubit = BlocProvider.of(context);
 
               return Scaffold(
                 backgroundColor: Colors.white,
@@ -42,10 +43,10 @@ class Login extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15),
                       child: Form(
-                        key: farmkay,
+                        key: formkey,
                         child: Column(
                           children: [
-                            OrangeLogoFontStyle(),
+                            const OrangeLogoFontStyle(),
                             BoldText('Login'),
                             Textfield(
                                 validator: (value) {
@@ -74,19 +75,19 @@ class Login extends StatelessWidget {
                             SizedBox(
                               height: 100,
                               child: Center(
-                                child: isLogining
+                                child: isLoagining
                                     ? Lottie.asset(
                                         'assets/lottie/waiting_api.json')
                                     : LoginButton(Colors.deepOrange, 'Login',
                                         Colors.white, context, () {
-                                        if (farmkay.currentState!.validate()) {
+                                        if (formkey.currentState!.validate()) {
                                           myCubit.authintication(context);
                                         }
                                       }),
                               ),
                             ),
                             OrDvider(),
-                            SignupButton(isLogining,Colors.white, 'Sign up',
+                            SignupButton(isLoagining, Colors.white, 'Sign up',
                                 Colors.deepOrange, context),
                           ],
                         ),
@@ -101,8 +102,10 @@ class Login extends StatelessWidget {
       ),
     );
   }
+}
 
-  void showTopSnackBar(BuildContext context) => Flushbar(
+extension TSBar on BuildContext {
+  void showTopSnackBar() => Flushbar(
         icon: const Icon(Icons.error, size: 32, color: Colors.white),
         shouldIconPulse: false,
         backgroundGradient: const LinearGradient(
@@ -121,5 +124,5 @@ class Login extends StatelessWidget {
         flushbarPosition: FlushbarPosition.TOP,
         margin: const EdgeInsets.fromLTRB(8, kToolbarHeight, 8, 0),
         borderRadius: BorderRadius.circular(16.0),
-      )..show(context);
+      )..show(this);
 }

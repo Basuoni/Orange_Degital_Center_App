@@ -20,13 +20,48 @@ class Home extends StatelessWidget {
       // crossAxisCount: 2,
       crossAxisCount: 2,
       children: [
-        MyCard("assets/icons/lecture.svg", 'lecture', (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Lectures()));}),
-        MyCard("assets/icons/sections.svg", 'sections',(){Navigator.push(context, MaterialPageRoute(builder: (context)=>Sections()));}),
-        MyCard("assets/icons/midterm.svg", 'midterms',(){Navigator.push(context, MaterialPageRoute(builder: (context)=>Midterms()));}),
-        MyCard("assets/icons/final.svg", 'final',(){Navigator.push(context, MaterialPageRoute(builder: (context)=>Exams()));}),
-        MyCard("assets/icons/event.svg", 'event',(){Navigator.push(context, MaterialPageRoute(builder: (context)=>Calender()));}),
-        MyCard("assets/icons/notes.svg", 'notes',(){Navigator.push(context, MaterialPageRoute(builder: (context)=>Notes()));}),
+        MyCard("assets/icons/lecture.svg", 'lecture', onPressed: () {
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const Lectures(),
+              ));
+        }),
+        MyCard("assets/icons/sections.svg", 'sections', onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const Sections(),
+              ));
+        }),
+
+        // push
+        // push replacement
+        // push and remove until
+        MyCard("assets/icons/midterm.svg", 'midterms', onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const Midterms()));
+        }),
+        MyCard("assets/icons/final.svg", 'final', onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => const Exams()));
+        }),
+        MyCard("assets/icons/event.svg", 'event', onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Calender()));
+        }),
+        MyCard("assets/icons/notes.svg", 'notes', onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => const Notes()));
+        }),
       ],
     );
   }
 }
+// apply lints
+// clean architecture => folder structure
+// replace all widgets to stateless widgets
+// dont pass context out the view
+// try to use named function parameters
+// use route by name not push ===  ex: pushNamed
+// search about get it for dependency injection || service locator

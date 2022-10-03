@@ -1,50 +1,40 @@
+import 'dart:developer';
+
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../componants/google_nav.dart';
 import '../../view_model/bloc/main_page_cubit.dart';
+import '../componants/google_nav.dart';
 
 class MainPage extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-    showTopSnackBar(context,'        Login Susses','   Hello');
-    bool send =true;
+    // showTopSnackBar(context, '        Login Susses', '   Hello');
+
     return BlocProvider(
       create: (context) => MainPageCubit(),
       child: BlocBuilder<MainPageCubit, MainPageState>(
         builder: (context, state) {
-          MainPageCubit cubit;
-          cubit = MainPageCubit.get(context);
-         if(send) {
-            send = false;
-         }
-         if (state is HomeState) {
-            print('Home');
-         } else if (state is NewsState) {
-            print('News');
-         } else if (state is SitingState) {
+          final homeCubit = context.read<MainPageCubit>();
+          if (state is HomeState) {
+            log('Home');
+          } else if (state is SitingState) {
             print('SitingState');
-         }
-          return MaterialApp(
-            home: Container(
-              child: SafeArea(
-                child: Scaffold(
-                  body: cubit.curPage,
-                  bottomNavigationBar: Goole_nav(onchange: (int value) {
-                    print(value);
-                    cubit.setCurPage(value);
-                  }),
-                ),
-              ),
-            ),
+          }
+
+          return Scaffold(
+            body: SafeArea(child: homeCubit.curPage),
+            bottomNavigationBar: Goole_nav(onchange: (int value) {
+              print(value);
+              homeCubit.setCurPage(value);
+            }),
           );
         },
       ),
     );
-
   }
+
   void showTopSnackBar(BuildContext context, String title, String mess) =>
       Flushbar(
         icon: const Icon(Icons.done_outline, size: 32, color: Colors.white),
@@ -59,8 +49,10 @@ class MainPage extends StatelessWidget {
             blurRadius: 8,
           )
         ],
-        title: title, //' Error Authentication !',
-        message: mess, //'Check your email',
+        title: title,
+        //' Error Authentication !',
+        message: mess,
+        //'Check your email',
         duration: const Duration(seconds: 5),
         flushbarPosition: FlushbarPosition.TOP,
         margin: const EdgeInsets.fromLTRB(8, kToolbarHeight, 8, 0),

@@ -7,19 +7,20 @@ import 'package:practice/view_model/database/end_points.dart';
 
 import '../../view/pages/main_page.dart';
 import '../database/dio_helper.dart';
+
 part 'home_login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitial());
 
-  static LoginCubit get(context) => BlocProvider.of(context);
+  static LoginCubit get(BuildContext context) => BlocProvider.of(context);
   TextEditingController emailct = TextEditingController();
   TextEditingController passwordct = TextEditingController();
   void changeVisibilityPassword() {
     emit(ChangeVisibilityPassword());
   }
 
-  void authintication(context) {
+  void authintication(BuildContext context) {
     emit(LoadingState());
     Future.delayed(const Duration(seconds: 2), () {
       DioHelper.postData(url: loginEndPoint, data: {
